@@ -14,7 +14,9 @@
         info = articleData.Info;
     }
     var portalCatalog = new PortalCatalogLimpet(articleData.PortalId, DNNrocketUtils.GetEditCulture());
-    var appThemeSystem = new AppThemeSystemLimpet("rocketdocs");
+    var systemData = (SystemLimpet)Model.GetDataObject("systemdata");
+    var appThemeSystem = (AppThemeSystemLimpet)Model.GetDataObject("appthemesystem");
+    var appThemeCatalog = (AppThemeSystemLimpet)Model.GetDataObject("appthemecatalog");
     var sessionParams = Model.SessionParamsData;
     var portalData = new PortalLimpet(portalCatalog.PortalId);
     var remoteModule = (RemoteModule)Model.GetDataObject("remotemodule");
@@ -26,7 +28,7 @@
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketCatalog/App_LocalResources/")
 @AddProcessData("resourcepath", "/DesktopModules/RocketThemes/" + portalCatalog.Organisation + "/" + portalCatalog.AppThemeAdminFolder + "/" + portalCatalog.AppThemeAdminVersion + "/resx/")
 
-@RenderLanguageSelector("articleadmin_editarticle", "{\"articleid\":\"" + articleData.ArticleId + "\"}", appThemeSystem, Model)
+@RenderLanguageSelector("articleadmin_editarticle", "{\"articleid\":\"" + articleData.ArticleId + "\"}", appThemeCatalog, Model)
 
 <div id="articleedit">
 

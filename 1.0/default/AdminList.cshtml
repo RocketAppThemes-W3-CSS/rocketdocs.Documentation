@@ -10,15 +10,17 @@
 @{
     var articleDataList = (ArticleLimpetList)Model.List.First();
     var passModel = new SimplisityRazor(articleDataList.PortalCatalog, new Dictionary<string, string>());
-    var appThemeSystem = new AppThemeSystemLimpet("rocketdocs");
+    var systemData = (SystemLimpet)Model.GetDataObject("systemdata");
+    var appThemeSystem = (AppThemeSystemLimpet)Model.GetDataObject("appthemesystem");
+    var appThemeCatalog = (AppThemeSystemLimpet)Model.GetDataObject("appthemecatalog");
     var sessionParams = Model.SessionParamsData;
 }
 
-@RenderLanguageSelector("articleadmin_editlist", "", appThemeSystem, Model)
+@RenderLanguageSelector("articleadmin_editlist", "", appThemeCatalog, Model)
 
 <div class='w3-animate-opacity'>
 
-    @RenderTemplate("AdminSearch.cshtml", appThemeSystem, Model, true)
+    @RenderTemplate("AdminSearch.cshtml", appThemeCatalog, Model, true)
 
     <div id="datalistsection" class="w3-padding">
 
