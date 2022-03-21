@@ -78,7 +78,7 @@
                         </span>
                     </div>
                     <div id="categoriestab" class='w3-row sectionname a-articlecategorylist w3-border w3-padding' style="">
-                        @RenderTemplate("ArticleCategoryList.cshtml", appThemeSystem, Model, true)
+                        @RenderTemplate("ArticleCategoryList.cshtml", appThemeCatalog, Model, true)
                     </div>
                 </div>
                 <div class="w3-third w3-padding-small">
@@ -89,9 +89,9 @@
                         </span>
                     </div>
                     <div id="docs" class='w3-row sectionname w3-border w3-padding' style="">
-                        @RenderTemplate("ArticleDocuments.cshtml", appThemeSystem, Model, true)
+                        @RenderTemplate("ArticleDocuments.cshtml", appThemeCatalog, Model, true)
                     </div>
-                    @RenderTemplate("ArticleDocumentSelect.cshtml", appThemeSystem, Model, true)
+                    @RenderTemplate("ArticleDocumentSelect.cshtml", appThemeCatalog, Model, true)
                 </div>
                 <div class="w3-third w3-padding-small">
                     <div onclick="$('#links').toggle();$('#linksexpand').toggle();" class="w3-button w3-block w3-theme-l3 w3-left-align">
@@ -101,7 +101,7 @@
                         </span>
                     </div>
                     <div id="links" class='w3-row sectionname w3-border w3-padding' style="">
-                        @RenderTemplate("ArticleLinks.cshtml", appThemeSystem, Model, true)
+                        @RenderTemplate("ArticleLinks.cshtml", appThemeCatalog, Model, true)
                     </div>
                 </div>
             </div>
