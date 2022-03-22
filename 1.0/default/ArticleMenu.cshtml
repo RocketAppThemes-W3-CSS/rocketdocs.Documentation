@@ -28,26 +28,14 @@
 @AddProcessData("resourcepath", appTheme.AppThemeVersionFolderRel + "/resx/")
 
 
-<div class="w3-row w3-white w3-padding">
-    <div class="w3-col l10 m12" id="main">
-
-        @if (sessionParams.GetInt("catid") == 0)
-        {
-            <h1>@catalogSettings.CatalogName &nbsp;</h1>
-        }
-        else
-        {
-            <h1>@categoryData.Name&nbsp;</h1>
-        }
+    <div class="w3-row">
+        <!--  <a href='javascript:void(0)' onclick='close_menu()' class='w3-button w3-hide-large w3-large w3-display-topright' style='right:16px;padding:3px 12px;font-weight:bold;'>&times;</a>-->
+        <h2 class="left">W3.CSS</h2>
+        <br>
 
         @foreach (var art in articleDataList.GetArticleList())
         {
-            <h2 id="@art.GUIDKey">@art.Name</h2>
-            <div>
-                @HtmlOf(art.RichText)
-            </div>
+            <a target="_top" class="w3-button w3-block" href="#@art.GUIDKey" style="text-decoration:none;">@art.Name</a>
         }
 
     </div>
-    <hr>
-</div>
