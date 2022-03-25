@@ -5,10 +5,12 @@
 @using RocketCatalog.Components;
 @using DNNrocketAPI.Components;
 
-@{ var categoryList = (CategoryLimpetList)Model.GetDataObject("categorylist");
-                var sessionParams = (SessionParams)Model.SessionParamsData;
-                var portalCatalog = (PortalCatalogLimpet)Model.GetDataObject("portalcatalog");
-                var appTheme = (AppThemeLimpet)Model.GetDataObject("apptheme"); }
+@{ 
+    var categoryList = (CategoryLimpetList)Model.GetDataObject("categorylist");
+    var sessionParams = (SessionParams)Model.SessionParamsData;
+    var portalCatalog = (PortalCatalogLimpet)Model.GetDataObject("portalcatalog");
+    var appTheme = (AppThemeLimpet)Model.GetDataObject("apptheme"); 
+}
 
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketCatalog/App_LocalResources/")
