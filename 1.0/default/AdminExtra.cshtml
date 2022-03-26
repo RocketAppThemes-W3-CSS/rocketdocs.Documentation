@@ -13,7 +13,7 @@
     {
         info = articleData.Info;
     }
-    var portalCatalog = new PortalCatalogLimpet(articleData.PortalId, DNNrocketUtils.GetEditCulture());
+    var portalCatalog = (PortalCatalogLimpet)Model.GetDataObject("portalcatalog");
     var appThemeSystem = new AppThemeSystemLimpet(portalCatalog.SystemKey);
     var sessionParams = Model.SessionParamsData;
     var portalData = new PortalLimpet(portalCatalog.PortalId);
