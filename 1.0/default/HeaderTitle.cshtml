@@ -17,7 +17,6 @@
     var categoryList = (CategoryLimpetList)Model.GetDataObject("categorylist");
     var appTheme = (AppThemeLimpet)Model.GetDataObject("apptheme");
     var appThemeDefault = (AppThemeLimpet)Model.GetDataObject("appthemedefault");
-    var categoryData = new CategoryLimpet(portalCatalog.PortalId, articleDataList.CategoryId, sessionParams.CultureCode);
     var catalogSettings = (CatalogSettingsLimpet)Model.GetDataObject("catalogsettings");
 
     var hbsDict = new Dictionary<string, SimplisityInfo>();
@@ -28,6 +27,6 @@
 @AddProcessData("resourcepath", appTheme.AppThemeVersionFolderRel + "/resx/")
 
 <div class="w3-xlarge">
-    SimplsityJS
+    @catalogSettings.CatalogName
 </div>
 
