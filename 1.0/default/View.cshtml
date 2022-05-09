@@ -9,7 +9,8 @@
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocket/api/App_LocalResources/")
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketCatalog/App_LocalResources/")
 
-@{ var sessionParams = (SessionParams)Model.SessionParamsData;
+@{
+    var sessionParams = (SessionParams)Model.SessionParamsData;
     var articleDataList = (ArticleLimpetList)Model.GetDataObject("articlelist");
     var portalCatalog = (PortalCatalogLimpet)Model.GetDataObject("portalcatalog");
     var remoteModule = (RemoteModule)Model.GetDataObject("remotemodule");
@@ -29,12 +30,34 @@
     var hbsDict = new Dictionary<string, SimplisityInfo>();
     hbsDict.Add("sessionparams", sessionParams.Info);
     hbsDict.Add("resxlist", RenderRazorUtils.GetResxPaths(Processdata));
+
+    var artList = articleDataList.GetArticleList();
 }
 
 @AddProcessData("resourcepath", appTheme.AppThemeVersionFolderRel + "/resx/")
 
-<div class="w3-row w3-white w3-padding">
+<div id="pagetop" class=""></div>
 
+
+<div class="w3-sidebar w3-light-grey w3-card" style="width:240px;">
+    <div class="w3-bar-block w3-large w3-margin-top">
+    @foreach (var catData in categoryList.GetCategoryList())
+    {
+        if (catData.CategoryId == categoryData.CategoryId)
+        {
+            <a class="w3-bar-item w3-button w3-indigo" href="@catData.CategoryUrl(sessionParams)">@catData.Name</a>
+        }
+        else
+        {
+            <a class="w3-bar-item w3-button w3-hover-blue" href="@catData.CategoryUrl(sessionParams)">@catData.Name</a>                    
+        }
+    }
+    </div>
+</div>
+
+<div class="w3-main w3-white w3-padding" style="margin-left:250px;">
+
+    <div class="w3-col m10 w3-padding">
         @if (catid == 0)
         {
             <h1>@catalogSettings.CatalogName &nbsp;</h1>
@@ -46,10 +69,27 @@
 
         @foreach (var art in articleDataList.GetArticleList())
         {
-            <h2 id="@art.GUIDKey">@art.Name</h2>
+            <div id="@art.GUIDKey"></div>
+            <div class="w3-large" style="margin-top:50px;">@art.Name</div>
             <div>
                 @HtmlOf(art.RichText)
             </div>
         }
+    </div>
+    @if (artList.Count > 0)
+    {
+        <div class="w3-sidebar w3-padding" style="width:240px;right:0" >
+                <a href="#pagetop" class="w3-small">
+                    <span class="material-icons">
+                        vertical_align_top
+                    </span>
+                </a><br/>
+            @foreach (var art in artList)
+            {
+                <a href="#@art.GUIDKey" class="w3-small">@art.Name</a><br/>
+            }
+        </div>        
+    }
+
 
 </div>
