@@ -31,17 +31,17 @@
     hbsDict.Add("sessionparams", sessionParams.Info);
     hbsDict.Add("resxlist", RenderRazorUtils.GetResxPaths(Processdata));
 
+    var catList = categoryList.GetCategoryList();
     var artList = articleDataList.GetArticleList();
 }
 
 @AddProcessData("resourcepath", appTheme.AppThemeVersionFolderRel + "/resx/")
 
-<div id="pagetop" class=""></div>
 
-
-<div class="w3-sidebar w3-light-grey w3-card" style="width:240px;">
-    <div class="w3-bar-block w3-large w3-margin-top">
-    @foreach (var catData in categoryList.GetCategoryList())
+<div class="w3-sidebar w3-white w3-card" style="width:240px;">
+    <div class="w3-white w3-border-bottom" style="height:43px;">&nbsp;</div>
+    <div class="w3-bar-block w3-large">
+    @foreach (var catData in catList)
     {
         if (catData.CategoryId == categoryData.CategoryId)
         {
@@ -55,35 +55,21 @@
     </div>
 </div>
 
-<div class="w3-main w3-white w3-padding" style="margin-left:250px;">
+<div class="w3-main w3-white" style="margin-left:250px;">
 
-    <div class="w3-col m10 w3-padding">
-        @if (catid == 0)
+    <div class="w3-col m10">
+        @foreach (var art in artList)
         {
-            <h1>@catalogSettings.CatalogName &nbsp;</h1>
-        }
-        else
-        {
-            <h1>@categoryData.Name&nbsp;</h1>
-        }
-
-        @foreach (var art in articleDataList.GetArticleList())
-        {
-            <div id="@art.GUIDKey"></div>
-            <div class="w3-large" style="margin-top:50px;">@art.Name</div>
-            <div>
+            <div id="@art.GUIDKey" style="padding-top:40px;"></div>
+            <h1 class="w3-border-top">@art.Name</h1>
+            <div class="w3-padding">
                 @HtmlOf(art.RichText)
             </div>
         }
     </div>
     @if (artList.Count > 0)
     {
-        <div class="w3-sidebar w3-padding" style="width:240px;right:0" >
-                <a href="#pagetop" class="w3-small">
-                    <span class="material-icons">
-                        vertical_align_top
-                    </span>
-                </a><br/>
+        <div class="w3-sidebar" style="width:240px;right:0;margin-top:40px;" >
             @foreach (var art in artList)
             {
                 <a href="#@art.GUIDKey" class="w3-small">@art.Name</a><br/>
