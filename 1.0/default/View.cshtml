@@ -26,8 +26,9 @@
         catid = catalogSettings.DefaultCategoryId;
     }
     var categoryData = new CategoryLimpet(portalCatalog.PortalId, catid, sessionParams.CultureCode, systemData.SystemKey);
-
-    var catList = categoryData.GetChildren();
+    var categoryMenu = new CategoryLimpet(portalCatalog.PortalId, remoteModule.Record.GetXmlPropertyInt("genxml/remote/categoryid"), sessionParams.CultureCode, systemData.SystemKey);
+    
+    var catList = categoryMenu.GetChildren();
     if (catList.Count == 0)
     {
         catList = categoryList.GetCategoryList();        
