@@ -46,11 +46,11 @@
     {
         if (catData.CategoryId == categoryData.CategoryId)
         {
-            <a class="w3-bar-item w3-button w3-indigo" href="@catData.CategoryUrl(sessionParams)">@catData.Name</a>
+            <a class="w3-bar-item w3-button w3-theme-d3" href="@catData.CategoryUrl(sessionParams)">@catData.Name</a>
         }
         else
         {
-            <a class="w3-bar-item w3-button w3-hover-blue" href="@catData.CategoryUrl(sessionParams)">@catData.Name</a>                    
+            <a class="w3-bar-item w3-button  w3-text-theme" href="@catData.CategoryUrl(sessionParams)">@catData.Name</a>                    
         }
     }
     </div>
