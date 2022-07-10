@@ -27,11 +27,11 @@
     }
     var categoryData = new CategoryLimpet(portalCatalog.PortalId, catid, sessionParams.CultureCode, systemData.SystemKey);
 
-    var hbsDict = new Dictionary<string, SimplisityInfo>();
-    hbsDict.Add("sessionparams", sessionParams.Info);
-    hbsDict.Add("resxlist", RenderRazorUtils.GetResxPaths(Processdata));
-
-    var catList = categoryList.GetCategoryList();
+    var catList = categoryData.GetChildren();
+    if (catList.Count == 0)
+    {
+        catList = categoryList.GetCategoryList();        
+    }
     var artList = articleDataList.GetArticleList();
 }
 
